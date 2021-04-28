@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SearchComponent from './SearchHandlingComponent';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import createStore from "./Redux"
+import SearchView from './SearchComponent/SearchView'
 
 // dev toools middleware
 const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -16,7 +16,7 @@ let store = createStore()
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <SearchComponent />
+      <SearchView />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
