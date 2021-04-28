@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import SearchComponent from './SearchHandlingComponent';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux'
+import createStore from "./Redux"
 
+// dev toools middleware
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+// create a redux store.
+let store = createStore()
+
+// todo - should add a container between the providers tags.
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <SearchComponent />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
