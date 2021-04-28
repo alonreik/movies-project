@@ -9,9 +9,6 @@ import SearchBar from './SearchBarComponent'
 
 class SearchHandlingComponent extends Component {
 
-
-  // {searchResults && console.log(searchResults)}
-
   render() {
     const { isLoading, searchTerm, searchResults, onRequestMovies, error } = this.props
 
@@ -22,6 +19,7 @@ class SearchHandlingComponent extends Component {
           <SearchBar
             onEnterPress={onRequestMovies}
           />
+          {searchResults && console.log(searchResults)}
         </div>
         <div>
           {error && <p style={{color: 'red'}}> Uh oh - something went wrong! </p>}
