@@ -31,7 +31,6 @@ export default Creators
 // This reducer is called when the action named apiCallRequest is dispatched.
 // the {bb} is the parameter to be sent to apiCallRequest. (not used)
 const apiCallRequest = (state, {word}) => {
-  console.log(word)
   return {...state, searchTerm: word ,isLoading: true, error: null};
 }
 

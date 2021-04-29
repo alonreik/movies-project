@@ -71,13 +71,16 @@ class SearchBar extends React.Component {
   render() {
     const classes = styles;
 
+    // When the app is fetching data from the API, the word 'Loading' acts
+    // as an activity indicator (instead of the search icon). 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <SearchIcon />
+                {!this.props.isLoading && <SearchIcon />}
+                {this.props.isLoading && 'Loading'}
               </div>
               <InputBase
                 onKeyDown={(e) => {
@@ -103,9 +106,17 @@ SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+// Look at the redux store and include the states that this component will recieve as props.
+const mapStatetoProps = (state) => ({
+  isLoading: state.Search.isLoading,
+  searchResults: state.Search.searchResults,
+  searchTerm: state.Search.searchTerm,
+  error: state.Search.error,
+})
+
 // maps functions of this component to a dispatch function that will update the global state.
 const mapDispatchtoProps = (dispatch) => ({
   onRequestMovies: (word) => dispatch(SearchActions.apiCallRequest(word)),
 })
 
-export default connect(null, mapDispatchtoProps)(SearchBar);
+export default connect(mapStatetoProps, mapDispatchtoProps)(SearchBar);
