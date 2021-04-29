@@ -37,7 +37,6 @@ const apiCallRequest = (state, {word}) => {
 // This reducer is called when the action named apiCallSuccess is dispatched.
 const apiCallSuccess = (state, {movies}) => {
   // The goal of the function is to return a new state with
-  console.log(movies)
   return {...state, searchResults: movies, isLoading: false, error: null};
 }
 

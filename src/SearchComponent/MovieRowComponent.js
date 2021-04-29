@@ -16,14 +16,16 @@ const useStyles = {
     textAlign: "center",
   },
   image: {
-    width: 100,
-    height: 75
+    width: 50,
+    height: 100
   },
   img: {
     margin: "auto",
     display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%"
+    // maxWidth:
+    width: 50,
+    height: 100
+    // maxHeight: "100%"
   }
 };
 
@@ -36,11 +38,11 @@ class MovieRow extends Component {
         <Paper className={classes.paper}>
           <Grid container spacing={1}>
             <Grid item>
-              <ButtonBase className={classes.image}>
+              <ButtonBase>
                 <img
-                  className={classes.img}
-                  alt="movie poster"
-                  src="/static/images/grid/complex.jpg"
+                  style={{width: 100, height: 100}}
+                  alt= {this.props.movie.Title + " Poster"}
+                  src={this.props.movie.Poster}
                 />
               </ButtonBase>
             </Grid>

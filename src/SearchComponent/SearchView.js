@@ -35,14 +35,14 @@ class SearchView extends Component {
 
         <div>
           <Grid container spacing={2}>
-            <Grid item xs={11}>
               {searchResults && searchResults.map(movie => (
-                <MovieRowComponent
-                  key={movie.imdbID}
-                  movie={movie}
-                />
+                <Grid item xs={11}>
+                  <MovieRowComponent
+                    key={movie.imdbID}
+                    movie={movie}
+                  />
+                </Grid>
               ))}
-            </Grid>
           </Grid>
         </div>
       </div>

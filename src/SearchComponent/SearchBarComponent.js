@@ -68,11 +68,12 @@ class SearchBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  //
   render() {
     const classes = styles;
 
     // When the app is fetching data from the API, the word 'Loading' acts
-    // as an activity indicator (instead of the search icon). 
+    // as an activity indicator (instead of the search icon).
     return (
       <div className={classes.root}>
         <AppBar position="static">
