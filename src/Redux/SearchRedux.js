@@ -4,17 +4,15 @@ import { createReducer, createActions } from 'reduxsauce'
 
 // https://redux-actions.js.org/api/createaction#createactions
 const { Types, Creators } = createActions(
-  // first argument: actionMap, an object whose keys are action types and whose values are either:
-    // a. a function, which is the payload creator for that action.
-    // b. an array with payload and meta functions in that order.
   {
-    //               the values (strings) will become additional action attributes (such as payload and such..)
+    // the values (strings in array) will become additional action attributes (such as payload and such..)
     apiCallRequest: ['word'],
     apiCallSuccess: ['movies'],
     apiCallFailure: ['error'],
   },
   {
-    // prefix is used so we could access the store easily (Redux will insert the prefix for us whenever it will access the store.)
+    // Prefix is used so we could access the relevant parts of the redux store's state easily.
+    // (Redux will insert the prefix of Search for us whenever we will access the store from the search-related components)
     prefix: 'SEARCH_'
   }
 )
@@ -29,14 +27,12 @@ export default Creators
 /* ------------- Reducers ------------- */
 
 // This reducer is called when the action named apiCallRequest is dispatched.
-// the {bb} is the parameter to be sent to apiCallRequest. (not used)
 const apiCallRequest = (state, {word}) => {
   return {...state, searchTerm: word ,isLoading: true, error: null};
 }
 
 // This reducer is called when the action named apiCallSuccess is dispatched.
 const apiCallSuccess = (state, {movies}) => {
-  // The goal of the function is to return a new state with
   return {...state, searchResults: movies, isLoading: false, error: null};
 }
 

@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import {connect} from 'react-redux'
 import { SearchActions } from '../Redux/SearchRedux'
 
-
+// Styles for the materialUI components.
 const styles = {
   root: {
     width: "100%"
@@ -45,6 +43,7 @@ const styles = {
   }
 };
 
+// A class (imported almost as-is from materialUI) representing a search bar.
 class SearchBar extends React.Component {
   state = {
     anchorEl: null,

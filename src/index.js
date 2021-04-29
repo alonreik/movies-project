@@ -6,13 +6,10 @@ import {Provider} from 'react-redux'
 import createStore from "./Redux"
 import SearchView from './SearchComponent/SearchView'
 
-// dev toools middleware
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
 // create a redux store.
 let store = createStore()
 
-// todo - should add a container between the providers tags.
+// "Super" render function of this app.
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

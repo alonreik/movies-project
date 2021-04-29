@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import '../App.css';
 import {connect} from 'react-redux'
 import { SearchActions } from '../Redux/SearchRedux'
-
 import MovieRowComponent from './MovieRowComponent'
 import SearchBar from './SearchBarComponent'
-
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-// todo - can convert to functoin instead of class
+// A class representing a component ("view") that displays the search screen.
 class SearchView extends Component {
-  render() {
 
-    const { isLoading, searchResults, onRequestMovies, error } = this.props
+  // Returns the component responsible for displaying the search screen.
+  searchView() {
+    const { searchResults, onRequestMovies, error } = this.props
 
     return (
       <div>
@@ -32,7 +35,6 @@ class SearchView extends Component {
             </Grid>
           </Grid>
         </div>
-
         <div>
           <Grid container spacing={2}>
               {searchResults && searchResults.map(movie => (
@@ -48,9 +50,23 @@ class SearchView extends Component {
       </div>
     )
   }
+
+  // Alon Reik: I started to use Router for URL routing and navigation, but currently
+  // left it as is to try and make more progress.
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/">
+            {this.searchView()}
+          </Route>
+        </Switch>
+      </Router>
+    )
+  }
 }
 
-// Look at the redux store and include the states that this component will recieve as props.
+// Maps the following properties of the redux store to this component's props.
 const mapStatetoProps = (state) => ({
   isLoading: state.Search.isLoading,
   searchResults: state.Search.searchResults,
@@ -58,8 +74,7 @@ const mapStatetoProps = (state) => ({
   error: state.Search.error,
 })
 
-// maps functions of this component to a dispatch function that will update the global state.
-// todo - maybe delete this if im not using this here
+// maps functions used in this component to a dispatch function that will update the global redux state.
 const mapDispatchtoProps = (dispatch) => ({
   onRequestMovies: (word) => dispatch(SearchActions.apiCallRequest(word)),
 })

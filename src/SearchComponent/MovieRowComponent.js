@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +6,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import {connect} from 'react-redux'
 import { SearchActions } from '../Redux/SearchRedux'
 
+// Styles for the materialUI components.
 const useStyles = {
   root: {
     flexGrow: 1
@@ -29,6 +29,7 @@ const useStyles = {
   }
 };
 
+// A class representing a movie (title, release year, poster) in one container/'box'
 class MovieRow extends Component {
   render() {
     const classes = useStyles;
@@ -66,14 +67,6 @@ class MovieRow extends Component {
   }
 
 }
-
-//
-const mapStatetoProps = (state) => ({
-  isLoading: state.Search.isLoading,
-  searchResults: state.Search.searchResults,
-  searchTerm: state.Search.searchTerm,
-  error: state.Search.error,
-})
 
 // maps functions of this component to a dispatch function that will update the global state.
 const mapDispatchtoProps = (dispatch) => ({
